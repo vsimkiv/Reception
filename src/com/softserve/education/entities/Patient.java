@@ -1,12 +1,10 @@
-package com.softserve.education;
+package com.softserve.education.entities;
 
 public class Patient {
-    private int idPatient;
     private String fullNamePatient;
     private int age;
 
-    public Patient(int idPatient, String fullNamePatient, int age) {
-        this.idPatient = idPatient;
+    public Patient(String fullNamePatient, int age) {
         this.fullNamePatient = fullNamePatient;
         this.age = age;
     }
@@ -16,6 +14,6 @@ public class Patient {
 
     @Override
     public String toString() {
-        return idPatient + ". " + fullNamePatient + "; "  + age;
+        return fullNamePatient + " (" + age + (")");
     }
 }
