@@ -1,4 +1,4 @@
-package com.softserve.education;
+package com.softserve.education.lib;
 
 public enum Specializations {
     GASTROENTEROLOGIST(1, "Gastroenterologist"),

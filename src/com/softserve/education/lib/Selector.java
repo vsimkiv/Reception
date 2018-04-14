@@ -1,7 +1,6 @@
 package com.softserve.education.lib;
 
 import com.softserve.education.entities.Doctor;
-import com.softserve.education.Specializations;
 
 import java.time.DayOfWeek;
 import java.util.LinkedList;

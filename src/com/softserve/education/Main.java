@@ -2,19 +2,31 @@ package com.softserve.education;
 
 import com.softserve.education.entities.Doctor;
 import com.softserve.education.entities.Patient;
+import com.softserve.education.entities.RegisterNotation;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 import static com.softserve.education.lib.Selector.*;
-import static com.softserve.education.Specializations.*;
+import static com.softserve.education.lib.Specializations.*;
 import static java.time.DayOfWeek.*;
+
+/**
+ * Doctor[] doctors - all doctors in the hospital
+ */
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Doctor[] doctors = new Doctor[10];
         doctors[0] = new Doctor(1, "Vavilov Dmytro Ivanovych",
@@ -38,24 +50,36 @@ public class Main {
         doctors[9] = new Doctor(10, "Melnyk Oleksandr Volodymyroch",
                 UROLOGIST, new DayOfWeek[]{THURSDAY, FRIDAY, SATURDAY});
 
-        List<String> schedule = new ArrayList<>();
+        List<RegisterNotation> schedule = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Hello, enter your full name and age, please");
+
+
+        
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Hello, enter your full name and age, please:");
             Patient patient = new Patient(new Scanner(System.in).nextLine(), new Scanner(System.in).nextInt());
 
             Doctor doctor = selectDoctor(selectSpecialist(doctors));
             String docName = doctor.getFullNameDoc();
-            String day = selectDay(doctor).toString();
-            int time = selectTime();
 
-
-            String registerNotation = patient + "----" + docName + "----" + day + "----" + time;
-            schedule.add(registerNotation);
+            RegisterNotation notation = new RegisterNotation(i, patient.toString(), docName, selectDay(doctor), selectTime());
+            schedule.add(notation);
         }
 
-        for (String notation : schedule) {
-            System.out.println(notation);
+
+
+        List<String> lines = Arrays.asList("ID\t\tPATIENT\t\t\t\tDOCTOR\t\t\t\t\t\t\tDAY\t\tTIME");
+        Path file = Paths.get("total-schedule.txt");
+        Files.write(file, lines, Charset.forName("UTF-8"));
+
+        System.out.println();
+        for (RegisterNotation reg : schedule) {
+            try {
+                Files.write(file, (reg.toString() + "\n").getBytes(), StandardOpenOption.APPEND);
+            }
+            catch (IOException e) {
+                System.out.println(e);
+            }
         }
     }
 }

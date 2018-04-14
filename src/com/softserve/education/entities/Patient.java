@@ -5,6 +5,7 @@ public class Patient {
     private int age;
 
     public Patient(String fullNamePatient, int age) {
+
         this.fullNamePatient = fullNamePatient;
         this.age = age;
     }

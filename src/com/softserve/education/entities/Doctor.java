@@ -1,6 +1,6 @@
 package com.softserve.education.entities;
 
-import com.softserve.education.Specializations;
+import com.softserve.education.lib.Specializations;
 
 import java.time.DayOfWeek;
 
