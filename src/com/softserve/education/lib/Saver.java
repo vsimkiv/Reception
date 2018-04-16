@@ -20,7 +20,6 @@ public class Saver {
     public static void save(Path file, Object o) {
         try {
             Files.write(file, (o.toString() + "\n").getBytes(), StandardOpenOption.APPEND);
-            System.out.println(o.toString());
         }
         catch (IOException e) {
             System.out.println(e);
