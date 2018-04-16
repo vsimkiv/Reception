@@ -2,23 +2,14 @@ package com.softserve.education.entities;
 
 import com.softserve.education.lib.Specializations;
 
-import java.time.DayOfWeek;
-
 public class Doctor {
-    private int id;
     private String fullNameDoc;
     private Specializations specialization;
-    private DayOfWeek[] fosterDays;
 
-    public Doctor(int id, String fullNameDoc, Specializations specialization, DayOfWeek[] fosterDays) {
-        this.id = id;
+    public Doctor(String fullNameDoc, Specializations specialization){
         this.fullNameDoc = fullNameDoc;
         this.specialization = specialization;
-        this.fosterDays = fosterDays;
-    }
 
-    public int getId() {
-        return id;
     }
 
     public String getFullNameDoc() {
@@ -29,12 +20,9 @@ public class Doctor {
         return specialization;
     }
 
-    public DayOfWeek[] getFosterDays() {
-        return fosterDays;
-    }
 
     @Override
     public String toString() {
-        return id + ". " + fullNameDoc + "; " + specialization.getValue();
+        return fullNameDoc + "; " + specialization.getValue();
     }
 }

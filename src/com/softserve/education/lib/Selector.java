@@ -3,67 +3,61 @@ package com.softserve.education.lib;
 import com.softserve.education.entities.Doctor;
 
 import java.time.DayOfWeek;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Selector {
-    public static List<Doctor> selectSpecialist(Doctor[] doctors) {
-        System.out.println("What specialist do you need?");
-        System.out.println(java.util.Arrays.asList(Specializations.values()));
+    public static List<Doctor> selectSpecialist(List<Doctor> doctors) {
+        int choice = new Scanner(System.in).nextInt();
 
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-
-        List<Doctor> doctorList = new LinkedList<>();
-
-        for (Doctor d : doctors) {
-            if (choice == d.getSpecialization().getKey()) {
-                doctorList.add(d);
+        List<Doctor> specDoctors = new ArrayList<>();
+        for (Doctor doc : doctors) {
+            if (doc.getSpecialization().getKey() == choice) {
+                specDoctors.add(doc);
             }
         }
-        System.out.println(doctorList);
-        return doctorList;
+        return specDoctors;
     }
 
-    public static Doctor selectDoctor(List<Doctor> doctorList) {
-        System.out.println("Select doctor, please: ");
-
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-
+    public static Doctor selectDoctor(List<Doctor> specialists) {
+        int choice = new Scanner(System.in).nextInt();
 
         Doctor selectedDoctor = null;
-        for (Doctor d : doctorList) {
-            if (choice == d.getId()) {
-                selectedDoctor = d;
+        for (Doctor spec : specialists) {
+            if (choice == specialists.indexOf(spec)) {
+                System.out.println("Your doctor is " + spec.getFullNameDoc());
+                selectedDoctor = spec;
             }
         }
         return selectedDoctor;
     }
 
-    public static DayOfWeek selectDay(Doctor d) {
-        System.out.println("Select day, please: ");
-        DayOfWeek[] days = d.getFosterDays();
+    public static DayOfWeek selectDay() {
+        List<DayOfWeek> days = Arrays.asList(DayOfWeek.values());
+        int choice = new Scanner(System.in).nextInt();
 
-        for (DayOfWeek day : days) {
-            System.out.println(day.toString());
-        }
-
-        Scanner sc = new Scanner(System.in);
-        String choice = sc.nextLine();
-
-        DayOfWeek selectedDay = null;
-        for (DayOfWeek day : days) {
-            if (choice.equals(day.toString())) {
-                selectedDay = day;
+        DayOfWeek day = null;
+        for (DayOfWeek d : days) {
+            if (choice == days.indexOf(d)) {
+                System.out.println("You chose " + d);
+                day = d;
             }
         }
-        return selectedDay;
+        return day;
     }
 
-    public static int selectTime() {
-        System.out.println("Select time, please: ");
-        return new Scanner(System.in).nextInt();
+    public static int selectHour(int[] workingHours){
+        int choice = new Scanner(System.in).nextInt();
+
+        int myHour = 0;
+        for (int i : workingHours){
+            if (choice == i){
+                System.out.println("You chose " + i + ":00");
+                myHour = i;
+            }
+        }
+        return myHour;
     }
 }

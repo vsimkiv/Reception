@@ -1,11 +1,11 @@
 package com.softserve.education.lib;
 
 public enum Specializations {
-    GASTROENTEROLOGIST(1, "Gastroenterologist"),
-    OTOLARYNGOLIST(2, "Otolaryngolist"),
-    DERMATOLOGIST(3, "Dermatologist"),
-    GYNECOLOGIST(4, "Gynecologist"),
-    UROLOGIST(5, "Urologist");
+    GASTROENTEROLOGIST(0, "Gastroenterologist"),
+    OTOLARYNGOLIST(1, "Otolaryngolist"),
+    DERMATOLOGIST(2, "Dermatologist"),
+    GYNECOLOGIST(3, "Gynecologist"),
+    UROLOGIST(4, "Urologist");
 
     private int key;
     private String value;
