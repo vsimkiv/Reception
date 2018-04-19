@@ -21,8 +21,8 @@ public class Saver {
         try {
             Files.write(file, (o.toString() + "\n").getBytes(), StandardOpenOption.APPEND);
         }
-        catch (IOException e) {
-            System.out.println(e);
+        catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 }

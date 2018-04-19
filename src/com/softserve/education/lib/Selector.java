@@ -1,6 +1,7 @@
 package com.softserve.education.lib;
 
 import com.softserve.education.entities.Doctor;
+import com.softserve.education.lib.enums.WorkingHours;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -48,14 +49,15 @@ public class Selector {
         return day;
     }
 
-    public static int selectHour(int[] workingHours){
+    public static String selectHour(){
+        List<WorkingHours> workingHours = Arrays.asList(WorkingHours.values());
         int choice = new Scanner(System.in).nextInt();
 
-        int myHour = 0;
-        for (int i : workingHours){
-            if (choice == i){
-                System.out.println("You chose " + i + ":00");
-                myHour = i;
+        String myHour = "No specific time";
+        for (WorkingHours hour : workingHours){
+            if (choice == hour.getKey()){
+                System.out.println("You chose " + hour.getValue());
+                myHour = hour.getValue();
             }
         }
         return myHour;

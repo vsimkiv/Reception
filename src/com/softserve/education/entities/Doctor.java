@@ -1,6 +1,6 @@
 package com.softserve.education.entities;
 
-import com.softserve.education.lib.Specializations;
+import com.softserve.education.lib.enums.Specializations;
 
 public class Doctor {
     private String fullNameDoc;

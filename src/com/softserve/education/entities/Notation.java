@@ -7,13 +7,13 @@ public class Notation{
     private String patient;
     private String doctor;
     private DayOfWeek day;
-    private int time;
+    private String hour;
 
-    public Notation(String patient, String doctor, DayOfWeek day, int time) {
+    public Notation(String patient, String doctor, DayOfWeek day, String hour) {
         this.patient = patient;
         this.doctor = doctor;
         this.day = day;
-        this.time = time;
+        this.hour = hour;
     }
 
     public String getPatient() {
@@ -40,16 +40,16 @@ public class Notation{
         this.day = day;
     }
 
-    public int getTime() {
-        return time;
+    public String getHour() {
+        return hour;
     }
 
-    public void setTime(int time) {
-        this.time = time;
+    public void setHour(String hour) {
+        this.hour = hour;
     }
 
     @Override
     public String toString() {
-        return patient + "\t" + doctor + "\t" + day + "\t" + time + "\n";
+        return patient + "\t" + doctor + "\t" + day + "\t" + hour + "\n";
     }
 }

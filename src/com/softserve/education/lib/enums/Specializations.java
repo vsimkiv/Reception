@@ -1,4 +1,4 @@
-package com.softserve.education.lib;
+package com.softserve.education.lib.enums;
 
 public enum Specializations {
     GASTROENTEROLOGIST(0, "Gastroenterologist"),
@@ -15,16 +15,17 @@ public enum Specializations {
         this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return key + ". " + value;
-    }
-
     public int getKey() {
         return key;
     }
 
     public String getValue() {
         return value;
+    }
+
+
+    @Override
+    public String toString() {
+        return key + ". " + value;
     }
 }

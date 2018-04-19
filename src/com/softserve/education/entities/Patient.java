@@ -1,5 +1,6 @@
 package com.softserve.education.entities;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Patient {
@@ -10,16 +11,26 @@ public class Patient {
 
     public Patient(String fullNamePatient, int age, String phone) {
         this.fullNamePatient = fullNamePatient;
-        this.age = age;
+        if (age >= 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age must me positive");
+        }
         this.phone = phone;
 
     }
 
-    public Patient() {
+    public Patient() throws InputMismatchException {
         System.out.println("Hello, enter your name, please: ");
         fullNamePatient = new Scanner(System.in).nextLine();
         System.out.println("Hello, enter your age, please: ");
-        age = new Scanner(System.in).nextInt();
+        int input = new Scanner(System.in).nextInt();
+        if (input >= 0) {
+            age = input;
+        } else {
+            System.out.println("Age must me positive");
+        }
+
         System.out.println("Hello, enter your phone, please: ");
         phone = new Scanner(System.in).nextLine();
     }
@@ -32,8 +43,17 @@ public class Patient {
         return age;
     }
 
+    public void setAge(int age) throws InputMismatchException{
+        if (age >= 0) {
+            this.age = age;
+        } else {
+            System.out.println("Age must me positive");
+        }
+    }
+
     public String getPhone() {
         return phone;
+
     }
 
     @Override
