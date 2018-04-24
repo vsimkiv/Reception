@@ -12,8 +12,8 @@ public class DialogContainer {
     public static Doctor chooseDoctor(List<Doctor> doctors){
         System.out.println("Hello. What specialist are You interested in?");
         printSpecializations();
-        System.out.println("Choose Your Doctor, please");
         List<Doctor> specialists = selectSpecialist(doctors);
+        System.out.println("Choose Your Doctor, please");
         printSpecialists(specialists);
         return selectDoctor(specialists);
     }

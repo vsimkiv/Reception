@@ -28,7 +28,7 @@ public class Selector {
         Doctor selectedDoctor = null;
         for (Doctor spec : specialists) {
             if (choice == specialists.indexOf(spec)) {
-                System.out.println("Your doctor is " + spec.getFullNameDoc());
+                System.out.println("Your doctor is " + spec.getFullName());
                 selectedDoctor = spec;
             }
         }

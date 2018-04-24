@@ -3,26 +3,24 @@ package com.softserve.education.entities;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Patient {
-    private String fullNamePatient;
+public class Patient extends Person {
     private int age;
     private String phone;
 
 
-    public Patient(String fullNamePatient, int age, String phone) {
-        this.fullNamePatient = fullNamePatient;
+    public Patient(String fullName, int age, String phone) throws InputMismatchException {
+        super(fullName);
         if (age >= 0) {
             this.age = age;
         } else {
             System.out.println("Age must me positive");
+            this.phone = phone;
         }
-        this.phone = phone;
-
     }
 
     public Patient() throws InputMismatchException {
         System.out.println("Hello, enter your name, please: ");
-        fullNamePatient = new Scanner(System.in).nextLine();
+        setFullName(new Scanner(System.in).nextLine());
         System.out.println("Hello, enter your age, please: ");
         int input = new Scanner(System.in).nextInt();
         if (input >= 0) {
@@ -35,15 +33,11 @@ public class Patient {
         phone = new Scanner(System.in).nextLine();
     }
 
-    public String getFullNamePatient() {
-        return fullNamePatient;
-    }
-
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) throws InputMismatchException{
+    public void setAge(int age) throws InputMismatchException {
         if (age >= 0) {
             this.age = age;
         } else {
@@ -58,6 +52,6 @@ public class Patient {
 
     @Override
     public String toString() {
-        return fullNamePatient + "\t\t\t" + age + "\t\t\t"  + phone;
+        return getFullName() + "\t\t\t" + age + "\t\t\t" + phone;
     }
 }

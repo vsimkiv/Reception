@@ -10,28 +10,28 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Printer {
-    public static void printSpecializations() {
-        List<Specializations> specializations = Arrays.asList(Specializations.values());
+    static void printSpecializations() {
+        Specializations[] specializations = Specializations.values();
         for (Specializations specialization : specializations) {
             System.out.println(specialization);
         }
     }
 
-    public static void printSpecialists(List<Doctor> specialists) {
+    static void printSpecialists(List<Doctor> specialists) {
         for (Doctor spec : specialists) {
             System.out.println(specialists.indexOf(spec) + ". " + spec.toString());
         }
     }
 
-    public static void printDaysOfWeek() {
+    static void printDaysOfWeek() {
         List<DayOfWeek> days = Arrays.asList(DayOfWeek.values());
         for (DayOfWeek day : days) {
             System.out.println(days.indexOf(day) + ". " + day);
         }
     }
 
-    public static void printWorkingHours() {
-        List<WorkingHours> workingHours = Arrays.asList(WorkingHours.values());
+    static void printWorkingHours() {
+        WorkingHours[] workingHours = WorkingHours.values();
         for (WorkingHours hour : workingHours) {
             System.out.println(hour);
         }

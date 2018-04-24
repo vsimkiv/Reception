@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.softserve.education.lib.DialogContainer.*;
+import static com.softserve.education.lib.Filer.createFile;
 import static com.softserve.education.lib.Printer.printRegistrationResult;
 import static com.softserve.education.lib.Saver.*;
 import static com.softserve.education.lib.enums.Specializations.*;
@@ -37,7 +38,7 @@ public class Main {
             Patient patient = new Patient();
             save(filePatients, patient);
 
-            Notation notation = new Notation(patient.getFullNamePatient(), doctor.getFullNameDoc(), day, hour);
+            Notation notation = new Notation(patient.getFullName(), doctor.getFullName(), day, hour);
             schedule.add(notation);
             save(fileSchedule, notation);
 
@@ -45,7 +46,7 @@ public class Main {
         }
     }
 
-    private static List<Doctor> getDoctors(Path fileDoctors) throws IOException {
+    private static List<Doctor> getDoctors(Path fileDoctors) {
         List<Doctor> doctors = new ArrayList<>();
         doctors.add(new Doctor("Vavilov Dmytro Ivanovych", GASTROENTEROLOGIST));
         doctors.add(new Doctor("Demchenko Iryna Petrivna", GASTROENTEROLOGIST));
