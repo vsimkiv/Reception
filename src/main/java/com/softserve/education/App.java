@@ -17,7 +17,7 @@ import static com.softserve.education.lib.Saver.*;
 import static com.softserve.education.lib.enums.Specializations.*;
 
 
-public class Main {
+public class App {
 
     public static void main(String[] args) throws IOException {
         Path fileDoctors = createFile(
